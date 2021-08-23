@@ -20,6 +20,7 @@
             height: auto;
             margin: 0 auto;
             
+            
         }
         /*헤더영역*/
         header{
@@ -102,28 +103,116 @@
 
         
         /*메인영역*/
-        mian {
+        main {
             width: 100%;
             height: auto;
-            border: 1px solid blue;
-            box-sizing: border-box;            
+                       
         }
 
         main > div {
             width: 100%;
             margin-top: 10px; /*여백처리*/
-            border: 1px solid green;
-            box-sizing: border-box;
+           
         }
 
         /*메인-slider*/
-        main > .slider { height: 312px;}
+        main > .slider {
+            position: relative;
+            height: 312px;}
+
+        main > .slider > ul {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /*그림여러개 넘칠때 숨김기능, 에니메이션 기능 추가 하기 전*/
+        }
+        main > .slider > ul > li {
+            position: absolute;
+            top : 0;
+            width: 100%;
+            height: 100%;
+        }
+        main > .slider > ul> li:nth-child(1){left:     0; }
+        main > .slider > ul> li:nth-child(2){left:  100%;}
+        main > .slider > ul> li:nth-child(3){left:  200%;}
+
+        main > .slider > img{
+            position: absolute;
+            left: 40px;
+            top: 40px;
+
+        }
+
+        main > .slider > .banner {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 230px;
+            height: 312px;
+            background-image: url('./img/main_banner_bg.jpg');
+        }
+        main > .slider > .float_banner {
+            position: fixed; /*항상 위치 고정*/
+            left: 50%;
+            top: 154px;
+            margin-left: 500px;
+            width: 52px;
+            height: 89px;
+            background-image: url('./img/float_banner_bg.png');           
+
+        }
+
 
         /*메인-banner*/
         main > .banner { height: 74px;}
+        main > .banner > a {
+            float: left;
+            display: block;
+            width: 50%;
+            height: 100%;
+           
+        }
+
+        main > .banner > a:nth-child(1) {background-image: url('./img/main_banner_sub1_bg.jpg');}
+        main > .banner > a:nth-child(2) {background-image: url('./img/main_banner_sub2_bg.jpg');}
 
         /*메인-latest*/
         main > .latest { height: 186px;}
+        main > .latest > article {
+            position: relative;
+            float: left;
+            width: 33.33%;
+            height: 100%;
+            
+        }
+
+        main > .latest > article > a {
+            position: absolute;
+            left: 0;
+            top: 16px;
+
+        }
+        main > .latest > article > img {
+            position: absolute;
+            left: 0;
+            bottom: 16px;
+        }
+        main > .latest > article > table {
+            position: absolute;
+            right: 12px;
+            bottom: 14px;
+            color: #6a6a6a;
+        }
+
+        main > .latest > article > table td:nth-child(2) {
+            display: block; /*width값이 고정됨*/
+            width: 140px;
+            right: 12px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 18px;
+        }
         
         /*메인-info*/
         main > .info { height: 154px;}
@@ -133,9 +222,20 @@
             width: 100%;
             margin-top: 10px; /*여백처리*/
             height: 120px;
-            border: 1px solid blue;
+            border-top: 1px solid #d1cab2;
             box-sizing: border-box;
         }
+
+        footer > p {
+            float: right;
+            font: normal 11px '돋움';
+            color: #585858;
+            margin-right: 26px;
+            margin-top: 16px;
+            line-height: 18px;
+
+        }
+
     </style>
 
 </head>
@@ -143,7 +243,7 @@
     <div id="wrapper">
         <header>
             <!--<img src="./img/head_top_line.png" alt=""> 여기서 이렇게 잡지 말고 위에 하자!-->
-            <a href="#" class="logo"><img src="./img/logo.png" alt"로고"></a><!--alt는 이미지설명-->
+            <a href="#" class="logo"><img src="./img/logo.png" alt="로고"/></a><!--alt는 이미지설명-->
             <p> <!--div로 해도되궁!-->
                 <a href="#">Home |</a>
                 <a href="#">Login |</a>
@@ -164,12 +264,146 @@
 
         </header>
         <main>
-            <div class="slider"></div>
-            <div class="banner"></div>
-            <div class="latest"></div>
+            <div class="slider">
+                <ul>
+                    <li><img src="./img/main_slide_img1.jpg" alt="슬라이더1"></li>
+                    <li><img src="./img/main_slide_img2.jpg" alt="슬라이더2"></li>
+                    <li><img src="./img/main_slide_img3.jpg" alt="슬라이더3"></li>
+                </ul>
+                
+                <img src="./img/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
+            
+                <div class="banner">
+                    <img src="./img/main_banner_txt.png" alt="GRAND OPEN"/>
+                    <img src="./img/main_banner_tit.png" alt="팜스토리 오픈기념 30%할인 이벤트"/>
+                    <img src="./img/main_banner_img.png" alt="과일"/>    
+                </div>
+            
+                <div class="float_banner">
+                    <img src="./img/float_banner_tit.png" alt="팜카드 신청시 10% 적립"/>
+                </div>
+
+            </div>    
+
+            <div class="banner">
+                <a href="#"><img src="./img/main_banner_sub1_tit.png" alt="오늘의 식단"/></a>
+                <a href="#"><img src="./img/main_banner_sub2_tit.png" alt="나도 요리사"/></a>
+
+
+
+            </div>
+            <div class="latest">
+                <article>
+                    <a href="#"><img src="./img/main_latest1_tit.png" alt="텃밭가꾸기"/></a>
+                    <img src="./img/main_latest1_img.jpg" alt="과일1"/>
+                    <table border="0">
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+
+                    </table>
+                </article>
+                <article>
+                    <a href="#"><img src="./img/main_latest2_tit.png" alt="귀농학교"/></a>
+                    <img src="./img/main_latest2_img.jpg" alt="절"/>
+                    <table border="0">
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+
+                    </table>
+                </article>
+                <article>
+                    <a href="#"><img src="./img/main_latest3_tit.png" alt="농작물이야기"/></a>
+                    <img src="./img/main_latest3_img.jpg" alt="풀"/>
+                    <table border="0">
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+                        <tr>
+                            <td>></td>
+                            <td>토마토! 건강하게 길러서</td>
+                            <td>21-08-23</td>   
+                        </tr>
+
+                    </table>
+                </article>
+
+
+            </div>
             <div class="info"></div>
         </main>
-        <footer></footer>
+        <footer>
+            <img src="./img/footer_logo.png" alt="푸터로고"/>
+            <p>
+                (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br/>
+                등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br/>
+                대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345 <br/>
+                Copyright(C)홍길동 All rights reserved.<br/>
+            </p>
+
+        </footer>
     </div>
     
 </body>
